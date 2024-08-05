@@ -13,12 +13,18 @@
             min-height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            padding: 10px;
+            box-sizing: border-box;
         }
         #logo {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
             margin-bottom: 20px;
         }
         h1 {
             margin-bottom: 20px;
+            text-align: center;
         }
         #search-container {
             position: relative;
@@ -26,10 +32,13 @@
             flex-direction: column;
             align-items: center;
             margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
         }
         #search-box {
             padding: 10px;
-            width: 200px;
+            width: 100%;
+            box-sizing: border-box;
             margin-bottom: 10px;
         }
         #suggestions {
@@ -54,9 +63,13 @@
         #image-container {
             position: relative;
             display: inline-block;
+            width: 100%;
+            max-width: 600px;
         }
         #image-container img {
             display: block;
+            width: 100%;
+            height: auto;
         }
         .highlight {
             position: absolute;
@@ -82,7 +95,7 @@
         <div id="suggestions"></div>
     </div>
     <div id="image-container">
-        <img src="map.png" alt="Sơ đồ số" id="number-image">
+        <img src="map.png" alt="Sơ đồ số" id="number-image" onload="resizeImage()">
     </div>
 
     <script>
@@ -439,7 +452,9 @@
             // Add more coordinates as needed
         };
 
-         function updateSuggestions() {
+          let imageWidth, imageHeight;
+
+        function updateSuggestions() {
             const query = document.getElementById('search-box').value;
             const suggestions = document.getElementById('suggestions');
             suggestions.innerHTML = '';
@@ -463,7 +478,8 @@
         function highlightNumber() {
             const searchValue = document.getElementById('search-box').value;
             const imageContainer = document.getElementById('image-container');
-            
+            const numberImage = document.getElementById('number-image');
+
             // Xóa bất kỳ highlight nào hiện có
             const existingHighlight = document.querySelector('.highlight');
             if (existingHighlight) {
@@ -474,12 +490,25 @@
                 const coords = numberCoords[searchValue];
                 const highlight = document.createElement('div');
                 highlight.className = 'highlight';
-                highlight.style.left = `${coords[0]}px`;
-                highlight.style.top = `${coords[1]}px`;
-                highlight.style.width = `${coords[2] + 10}px`;  // Tăng kích thước vòng tròn
-                highlight.style.height = `${coords[3] + 10}px`; // Tăng kích thước vòng tròn
+
+                // Tính toán tỷ lệ thu phóng
+                const scaleX = numberImage.clientWidth / imageWidth;
+                const scaleY = numberImage.clientHeight / imageHeight;
+
+                // Điều chỉnh tọa độ theo tỷ lệ thu phóng
+                highlight.style.left = `${coords[0] * scaleX}px`;
+                highlight.style.top = `${coords[1] * scaleY}px`;
+                highlight.style.width = `${coords[2] * scaleX}px`;
+                highlight.style.height = `${coords[3] * scaleY}px`;
+
                 imageContainer.appendChild(highlight);
             }
+        }
+
+        function resizeImage() {
+            const numberImage = document.getElementById('number-image');
+            imageWidth = numberImage.naturalWidth;
+            imageHeight = numberImage.naturalHeight;
         }
     </script>
 
