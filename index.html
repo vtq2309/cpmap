@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CP Pemulwuy Map</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #logo {
+            margin-top: 20px;
+        }
+        #title {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative; /* Thêm thuộc tính này để đảm bảo #suggestions được đặt tương đối so với #input-container */
+        }
+        #input-number {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+        #suggestions {
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute;
+            background: #fff;
+            z-index: 1000;
+            width: 300px;
+            text-align: left;
+            top: 100%; /* Đặt danh sách gợi ý ngay bên dưới ô nhập liệu */
+        }
+        .suggestion-item {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+        }
+        #pdf-container {
+            width: 80%;
+            border: 1px solid #000;
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .pdf-page {
+            margin-bottom: 10px;
+        }
+        .blinking-circle {
+            animation: blink 1s infinite;
+            stroke: black;
+            fill: none;
+            stroke-width: 2;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <img id="logo" src="logo.png" alt="CouriersPlease Logo">
+    <div id="title">CP Pemulwuy Map</div>
+    <div id="input-container">
+        <input type="text" id="input-number" placeholder="Nhập số để khoanh tròn">
+        <div id="suggestions"></div>
+    </div>
+    <div id="pdf-container"></div>
+
+    <!-- Sử dụng CDN để tải PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
