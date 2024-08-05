@@ -15,6 +15,7 @@
             font-family: Arial, sans-serif;
             padding: 10px;
             box-sizing: border-box;
+            text-align: center;
         }
         #logo {
             width: 100%;
@@ -24,7 +25,6 @@
         }
         h1 {
             margin-bottom: 20px;
-            text-align: center;
         }
         #search-container {
             position: relative;
@@ -45,12 +45,9 @@
             border: 1px solid #ddd;
             max-height: 150px;
             overflow-y: auto;
-            position: absolute;
-            top: 100%;
-            left: 0;
             background: white;
             z-index: 1000;
-            width: 100%;
+            width: 60%;
             box-sizing: border-box;
         }
         #suggestions div {
@@ -91,7 +88,7 @@
     <img src="logo.png" alt="Logo" id="logo">
     <h1>CP Pemulwuy Map</h1>
     <div id="search-container">
-        <input type="text" id="search-box" placeholder="Enter Run Number" oninput="updateSuggestions()">
+        <input type="text" id="search-box" placeholder="Nhập số cần tìm" oninput="updateSuggestions()">
         <div id="suggestions"></div>
     </div>
     <div id="image-container">
