@@ -119,10 +119,15 @@ function circleNumber(item) {
     const width = context.measureText(item.str).width;
     const height = 10; // Chiều cao ước tính của chữ
 
+    // Điều chỉnh vị trí của vòng tròn
+    const adjustedX = x + (width / 2);
+    const adjustedY = y - (height / 2);
+    const radius = Math.max(width, height) * 1.5; // Tăng kích thước vòng tròn
+
     const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle.setAttribute("cx", x + width / 2);
-    circle.setAttribute("cy", y - height / 2);
-    circle.setAttribute("r", Math.max(width, height) * 1.5); // Tăng kích thước vòng tròn
+    circle.setAttribute("cx", adjustedX);
+    circle.setAttribute("cy", adjustedY);
+    circle.setAttribute("r", radius);
     circle.setAttribute("class", "blinking-circle");
 
     svg.appendChild(circle);
