@@ -11,35 +11,27 @@
             align-items: center;
             margin: 0;
             font-family: Arial, sans-serif;
-            padding: 10px;
-            box-sizing: border-box;
         }
         #logo {
             margin-top: 20px;
-            width: 100%;
-            max-width: 300px;
         }
         #title {
             margin-top: 10px;
             margin-bottom: 20px;
             font-size: 24px;
             font-weight: bold;
-            text-align: center;
         }
         #input-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 20px;
-            position: relative; /* Đảm bảo #suggestions được đặt tương đối so với #input-container */
-            width: 100%;
+            position: relative;
         }
         #input-number {
             padding: 10px;
             font-size: 16px;
-            width: 100%;
-            max-width: 300px;
-            box-sizing: border-box;
+            width: 300px;
         }
         #suggestions {
             border: 1px solid #ccc;
@@ -48,11 +40,9 @@
             position: absolute;
             background: #fff;
             z-index: 1000;
-            width: 100%;
-            max-width: 300px;
+            width: 300px;
             text-align: left;
-            top: 100%; /* Đặt danh sách gợi ý ngay bên dưới ô nhập liệu */
-            box-sizing: border-box;
+            top: 100%;
         }
         .suggestion-item {
             padding: 5px;
@@ -62,17 +52,17 @@
             background-color: #f0f0f0;
         }
         #pdf-container {
-            width: 100%;
-            max-width: 1000px;
+            
             border: 1px solid #000;
             position: relative;
             display: flex;
             justify-content: flex-start;
-            overflow-x: auto;
+            overflow: auto; /* Cho phép cuộn ngang và dọc */
             box-sizing: border-box;
         }
         .pdf-page {
             margin-bottom: 10px;
+            width: 100%;
         }
         .blinking-circle {
             animation: blink 1s infinite;
