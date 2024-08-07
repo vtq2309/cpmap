@@ -81,14 +81,11 @@
             50% { opacity: 0; }
             100% { opacity: 1; }
         }
-		 footer {
+        footer {
             margin-top: 5px; /* Điều chỉnh giá trị theo ý bạn để tạo khoảng cách mong muốn */
         }
-
-        }
-		
     </style>
-	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="manifest" href="images/site.webmanifest">
@@ -98,7 +95,7 @@
     <img src="logo.png" alt="Logo" id="logo">
     <h1>CP Pemulwuy Map</h1>
     <div id="search-container">
-        <input type="text" id="search-box" placeholder="Enter Run Number" oninput="updateSuggestions()">
+        <input type="number" id="search-box" placeholder="Enter Run Number" oninput="updateSuggestions()">
         <div id="suggestions"></div>
     </div>
     <div id="image-container">
@@ -107,10 +104,10 @@
 
     <script>
         // Đối tượng để lưu trữ tọa độ
-         let numberCoords = {};
+        let numberCoords = {};
 
-         let imageWidth, imageHeight;
-		  // Tải dữ liệu từ tệp JSON
+        let imageWidth, imageHeight;
+        // Tải dữ liệu từ tệp JSON
         fetch('coords.json')
             .then(response => response.json())
             .then(data => {
@@ -175,7 +172,7 @@
             imageHeight = numberImage.naturalHeight;
         }
     </script>
-	<!-- Footer -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>Created by: Thien Quang VU</p>
