@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CP Pemulwuy Map</title>
+    <title>Pemulwuy Driver Map</title>
     <style>
         body {
             display: flex;
@@ -24,7 +24,33 @@
             margin-bottom: 20px;
         }
         h1 {
+            margin-bottom: 10px;
+        }
+        #back-button-container {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        #back-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        #back-button img {
+            margin-left: 10px;
+            width: 20px;
+            height: 20px;
+        }
+        #back-button .icon-left {
+            margin-right: 10px;
+            margin-left: 0;
         }
         #search-container {
             position: relative;
@@ -93,7 +119,14 @@
 <body>
 
     <img src="logo.png" alt="Logo" id="logo">
-    <h1>CP Pemulwuy Map</h1>
+    <h1>Pemulwuy Driver Map</h1>
+    <div id="back-button-container">
+        <a href="https://vtq2309.github.io/webcp/" id="back-button">
+            <img src="images/back.png" alt="Back Icon" class="icon-left">
+            Back to Suburb Lookup
+            <img src="images/lookupicon.ico" alt="Icon">
+        </a>
+    </div>
     <div id="search-container">
         <input type="text" id="search-box" pattern="[0-9]*" inputmode="numeric" placeholder="Enter Run Number" oninput="updateSuggestions()">
         <div id="suggestions"></div>
