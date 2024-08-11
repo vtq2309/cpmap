@@ -78,7 +78,7 @@
         function downloadCoords() {
             let coordsText = "";
             for (const [number, coords] of Object.entries(numberCoords)) {
-                coordsText += `'${number}': [${coords.join(", ")}],\n`;
+                coordsText += `"${number}": [${coords.join(", ")}],\n`;
             }
 
             const blob = new Blob([coordsText], { type: "text/plain" });
